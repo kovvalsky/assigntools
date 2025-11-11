@@ -114,7 +114,7 @@ def read_sentence_anno(tree, btree):
     """
     anno = { 'tree': tree, 'btree': btree }
     anno['tok'] = [ t for t in re.split('[)( ]+', anno['btree']) if t ]
-    anno['pos'] = re.findall('\(([^()]+)\s+[^()]+\)', anno['tree'])
+    anno['pos'] = re.findall(r'\(([^()]+)\s+[^()]+\)', anno['tree'])
     # check that the number of tokens coincides with the number of pos tags
     assert len(anno['pos']) == len(anno['tok']), f"{i}: len({anno['pos']}) =/= len({anno['tok']})"
     return anno
